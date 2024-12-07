@@ -1,7 +1,0 @@
-Nume: Lesan , Prenume: Alexandra, Data inrolarii: 01-09-23, Email: alexandra.lesan@isa.utm.md, Licentiat: 0
-Nume: Ceban, Prenume: Alexandru, Data inrolarii: 01-03-23, Email: alexandru.ceban@isa.utm.md, Licentiat: 0
-Nume: Lungu, Prenume: Cristian, Data inrolarii: 23-05-02, Email: cristian.lungu@isa.utm.md, Licentiat: 0
-Nume: Bivol, Prenume: Ion, Data inrolarii: 01-03-23, Email: ion.bivol@isa.utm.md, Licentiat: 0
-Nume: Bitca, Prenume: Valeria, Data inrolarii: 01-03-23, Email: valeria.bitca@isa.utm.md, Licentiat: 0
-Nume: Cebotari, Prenume: Andrei, Data inrolarii: 01-09-19, Email: andrei.cebotari@isa.utm.md, Licentiat: 1
-Nume: Creciunel, Prenume: Mariana, Data inrolarii: 01-09-18, Email: mariana.creciunel@isa.utm.md, Licentiat: 1

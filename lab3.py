@@ -24,10 +24,9 @@ class MonitoredFile:
         self.info = get_file_info(path)
 
     def display_info(self):
-        # Info generale
-        print(f"Nume fișier: {self.info['name']}")
+        print(f"Nume fisier: {self.info['name']}")
         print(f"Extensie: {self.info['ext']}")
-        print(f"Data creării: {self.info['creation_time']}")
+        print(f"Data crearii: {self.info['creation_time']}")
         print(f"Ultima modificare: {self.info['last_modified_time']}")
 
     def has_changed_since(self, previous_info):
@@ -37,7 +36,7 @@ class MonitoredFile:
 class ImageFile(MonitoredFile):
     def display_info(self):
         super().display_info()
-        # Simulare dimensiuni imagine
+        
         width = 800
         height = 600
         print(f"Dimensiuni imagine: {width}x{height}")
@@ -51,9 +50,9 @@ class TextFile(MonitoredFile):
         lines = content.split('\n')
         words = content.split()
         chars = len(content)
-        print(f"Număr linii: {len(lines)}")
-        print(f"Număr cuvinte: {len(words)}")
-        print(f"Număr caractere: {chars}")
+        print(f"Numar linii: {len(lines)}")
+        print(f"Numar cuvinte: {len(words)}")
+        print(f"Numar caractere: {chars}")
 
 
 class ProgramFile(MonitoredFile):
@@ -63,9 +62,9 @@ class ProgramFile(MonitoredFile):
             lines = f.readlines()
         class_count = sum(1 for l in lines if 'class ' in l)
         method_count = sum(1 for l in lines if 'def ' in l or 'void ' in l)
-        print(f"Număr linii: {len(lines)}")
-        print(f"Număr clase: {class_count}")
-        print(f"Număr metode: {method_count}")
+        print(f"Numar linii: {len(lines)}")
+        print(f"Numar clase: {class_count}")
+        print(f"Numar metode: {method_count}")
 
 
 def create_monitored_file(path: str):
@@ -88,7 +87,7 @@ class FolderMonitor:
         self.snapshot_files = {}
         self.current_files = {}
         self.update_current_files()
-        self.take_snapshot()  # inițial
+        self.take_snapshot()
 
     def update_current_files(self):
         self.current_files = {}
@@ -107,14 +106,11 @@ class FolderMonitor:
             self.snapshot_files[fname] = mf.info.copy()
 
     def get_status(self):
-        # Actualizează fișiere curente înainte de a obține status
         self.update_current_files()
         status_list = []
-        # Fișiere șterse
         for fname in self.snapshot_files:
             if fname not in self.current_files:
                 status_list.append((fname, "deleted"))
-        # Fișiere noi sau modificate
         for fname, mf in self.current_files.items():
             if fname not in self.snapshot_files:
                 status_list.append((fname, "new"))
@@ -127,22 +123,19 @@ class FolderMonitor:
         return status_list
 
     def display_info(self, filename: str):
-        # Actualizează lista de fișiere înainte de afișare info
         self.update_current_files()
         if filename in self.current_files:
             self.current_files[filename].display_info()
         else:
-            print(f"Fișierul {filename} nu există în directorul curent.")
+            print(f"Fisierul {filename} nu exista in directorul curent.")
 
     def commit_changes(self):
-        # Actualizează fișiere curente și face snapshot
         self.update_current_files()
         self.take_snapshot()
-        print("Snapshot actualizat. Starea resetată la 'clean'.")
+        print("Snapshot actualizat. Starea resetata la 'clean'.")
 
 
 if __name__ == "__main__":
-    # Creăm directorul dacă nu există
     if not os.path.exists(MONITORED_DIR):
         os.makedirs(MONITORED_DIR)
 
@@ -174,12 +167,12 @@ if __name__ == "__main__":
             st = monitor.get_status()
             for fname, stat in st:
                 if stat == "new":
-                    print(f"{fname} este un fișier nou de la ultimul snapshot.")
+                    print(f"{fname} este un fisier nou de la ultimul snapshot.")
                 elif stat == "deleted":
-                    print(f"{fname} a fost șters de la ultimul snapshot.")
+                    print(f"{fname} a fost sters de la ultimul snapshot.")
                 elif stat == "modified":
                     print(f"{fname} a fost modificat de la ultimul snapshot.")
                 else:
                     print(f"{fname} este neschimbat.")
         else:
-            print("Comandă necunoscută. Comenzi: commit, status, info <fisier>, exit")
+            print("Comanda necunoscuta. Comenzi: commit, status, info <fisier>, exit")
